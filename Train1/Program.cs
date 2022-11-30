@@ -1,6 +1,14 @@
+using Microsoft.EntityFrameworkCore;
+using Train1.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddDbContext<CTQM_DbContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("MyDB"));
+});
+
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
