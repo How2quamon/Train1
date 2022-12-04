@@ -16,11 +16,6 @@ namespace Train1.Controllers
             _context = context;
         }
 
-        public IActionResult Index()
-        {
-            return ViewResult("datve");
-        }
-
         [HttpGet]
         public IActionResult GetAll()
         {
