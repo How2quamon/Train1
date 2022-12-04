@@ -1,6 +1,9 @@
-﻿namespace Train1.Data
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Data;
+namespace Train1.Data
 {
-    [table("NhanVien")]
+    [Table("NhanVien")]
     public class NhanVIen
     {
         [Key]

@@ -8,11 +8,15 @@ namespace Train1.Data
     public class ThongTinPhim
     {
         [Key]
-        public Guid MaPhim { get; set; }
+        public Guid MaCTPhim { get; set; }
         public string ?TenNXS { get; set; }
         public string ?HXS { get; set; }
         [Required]
         public string ?DaoDien { get; set; }
         public string ?TheLoai { get; set; }
+        public Guid MaPhim { get; set; }
+        [ForeignKey("MaPhim")]
+        public Phim? Phim { get; set; }
+
     }
 }

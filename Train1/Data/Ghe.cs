@@ -1,4 +1,7 @@
-﻿namespace Train1.Data
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Data;
+namespace Train1.Data
 {
     [Table("Ghe")]
     public class Ghe
@@ -14,7 +17,7 @@
         public bool TrangThai { get; set; }
 
         public Guid MaPhong { get; set; }
-        [Foreignkey("MaPhong")]
+        [ForeignKey("MaPhong")]
         public Phong Phong { get; set; }
     }
 }
