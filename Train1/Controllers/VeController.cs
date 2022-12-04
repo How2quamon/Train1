@@ -16,11 +16,6 @@ namespace Train1.Controllers
             _context = context;
         }
 
-        public IActionResult Index()
-        {
-            return ViewResult("datve");
-        }
-
         [HttpGet]
         public IActionResult GetAll()
         {
@@ -40,18 +35,47 @@ namespace Train1.Controllers
                 return NotFound();
             }
         }
-        /*
-                [HttpPost]
-                public IActionResult CreateNew(VeViewModel model)
+        
+        [HttpPost]
+        public IActionResult CreateNew(VeViewModel model)
+        {
+            try
+            {
+                var Ve = new Ve
                 {
-                    var Ve = new Ve
-                    {
+                    MaVe = model.MaVe,
+                    MaGhe = model.MaGhe,
+                    MaKhachHang = model.MaKhachHang,
+                    MaNhanVien = model.MaNhanVien,
+                    GiaVe = model.GiaVe
+                };
+                _context.Add(Ve);
+                _context.SaveChanges();
+                return Ok(Ve);
+            }
+            catch
+            {
+                return BadRequest();
+            }
+        }
 
-                    };
-                    _context.Add(model);
-                    _context.SaveChanges();
-
-                }
-        */
+        [HttpPut("{id}")]
+        public IActionResult UpdateVeById(Guid id, VeViewModel model)
+        {
+            var Ve = _context.Ves.SingleOrDefault(v => v.MaVe == id);
+            if (Ve != null)
+            {
+                Ve.MaGhe = model.MaGhe;
+                Ve.MaKhachHang = model.MaKhachHang;
+                Ve.MaNhanVien = model.MaNhanVien;
+                Ve.GiaVe = model.GiaVe;
+                _context.SaveChanges();
+                return NoContent();
+            }
+            else
+            {
+                return NotFound();
+            }
+        }
     }
 }

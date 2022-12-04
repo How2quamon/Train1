@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Train1.Data;
 
@@ -11,9 +12,11 @@ using Train1.Data;
 namespace Train1.Migrations
 {
     [DbContext(typeof(CTQM_DbContext))]
-    partial class CTQMDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221204041251_FixKey")]
+    partial class FixKey
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
